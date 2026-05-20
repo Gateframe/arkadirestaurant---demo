@@ -1,4 +1,4 @@
-import { createFileRoute, useRouterState } from "@tanstack/react-router";
+import { createFileRoute } from "@tanstack/react-router";
 import { useEffect } from "react";
 import { Navbar } from "@/components/landing/Navbar";
 import { Hero } from "@/components/landing/Hero";
@@ -95,14 +95,15 @@ export const Route = createFileRoute("/")({
 });
 
 function Index() {
-  const hash = useRouterState({ select: (s) => s.location.hash });
-
+  /** Drop legacy `/#hero` bookmarks — homepage URL should stay `/`. */
   useEffect(() => {
-    if (hash !== "hero") return;
-    requestAnimationFrame(() => {
-      document.getElementById("hero")?.scrollIntoView({ behavior: "smooth", block: "start" });
-    });
-  }, [hash]);
+    if (window.location.hash.replace(/^#/, "") !== "hero") return;
+    window.history.replaceState(
+      null,
+      "",
+      `${window.location.pathname}${window.location.search}`,
+    );
+  }, []);
 
   return (
     <main className="relative min-h-screen overflow-x-hidden bg-background text-foreground">

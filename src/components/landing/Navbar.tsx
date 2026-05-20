@@ -57,12 +57,15 @@ export function Navbar() {
           >
             <Link
               to="/"
-              hash="hero"
               aria-label={t("nav.home")}
               className="m-0 flex h-full shrink-0 items-center pr-1.5 pl-0 transition-opacity hover:opacity-100 sm:pr-3"
-              onClick={() => {
-                if (window.location.pathname === "/") {
-                  scrollToHero();
+              onClick={(event) => {
+                if (window.location.pathname !== "/") return;
+                event.preventDefault();
+                scrollToHero();
+                const path = `${window.location.pathname}${window.location.search}`;
+                if (window.location.hash) {
+                  window.history.replaceState(null, "", path);
                 }
               }}
             >
