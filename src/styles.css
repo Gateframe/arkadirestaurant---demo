@@ -42,14 +42,19 @@
   --font-serif: "Cormorant Garamond", "Times New Roman", serif;
   --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
 
-  --shadow-soft: 0 30px 80px -30px rgba(22, 16, 12, 0.55);
-  --shadow-card: 0 20px 60px -25px rgba(18, 14, 11, 0.65);
+  --shadow-soft: 0 30px 80px -30px rgba(8, 14, 11, 0.55);
+  --shadow-card: 0 20px 60px -25px rgba(8, 12, 10, 0.65);
   --gradient-overlay: linear-gradient(
     180deg,
-    rgba(28, 22, 18, 0) 0%,
-    rgba(28, 22, 18, 0.14) 45%,
-    rgba(18, 14, 12, 0.78) 100%
+    rgba(14, 22, 18, 0) 0%,
+    rgba(14, 22, 18, 0.14) 45%,
+    rgba(10, 16, 13, 0.78) 100%
   );
+
+  --shadow-brand: 0 12px 34px -30px color-mix(in oklch, var(--gold) 80%, transparent);
+  --glow-brand-sm: color-mix(in oklch, var(--gold) 18%, transparent);
+  --glow-brand-md: color-mix(in oklch, var(--gold) 28%, transparent);
+  --glow-brand-lg: color-mix(in oklch, var(--gold) 12%, transparent);
 
   --animate-fade-up: fade-up 0.9s cubic-bezier(0.22, 1, 0.36, 1) both;
   --animate-fade-in: fade-in 1.2s ease-out both;
@@ -63,51 +68,46 @@
     to { opacity: 1; }
   }
 
-  /** Traveling highlight along an SVG stroke (reviews badge frame). */
-  @keyframes reviews-badge-spark-travel {
-    to {
-      stroke-dashoffset: -100;
-    }
-  }
 }
 
 :root {
   --radius: 0.875rem;
 
-  /* Dark luxury palette — warm graphite / brown-black (not pure black) */
-  --background: oklch(0.11 0.012 58);
-  --foreground: oklch(0.94 0.02 85);      /* ivory #f3efe2 */
+  /* Dark luxury palette — deep forest green base, sage brand accent */
+  --background: oklch(0.10 0.028 158);
+  --foreground: oklch(0.94 0.02 85); /* ivory */
 
-  --card: oklch(0.145 0.01 58);
+  --card: oklch(0.13 0.026 158);
   --card-foreground: oklch(0.94 0.02 85);
 
-  --popover: oklch(0.145 0.01 58);
+  --popover: oklch(0.13 0.026 158);
   --popover-foreground: oklch(0.94 0.02 85);
 
-  --primary: oklch(0.74 0.10 80);         /* gold #b7a46a */
-  --primary-foreground: oklch(0.1 0.012 58);
+  --primary: oklch(0.58 0.095 158); /* premium dark sage green */
+  --primary-foreground: oklch(0.1 0.028 158);
 
-  --secondary: oklch(0.17 0.01 58);
+  --secondary: oklch(0.16 0.024 158);
   --secondary-foreground: oklch(0.94 0.02 85);
 
-  --muted: oklch(0.17 0.01 58);
-  --muted-foreground: oklch(0.72 0.02 78);
+  --muted: oklch(0.16 0.024 158);
+  --muted-foreground: oklch(0.72 0.03 150);
 
-  --accent: oklch(0.74 0.10 80);
-  --accent-foreground: oklch(0.1 0.012 58);
+  --accent: oklch(0.58 0.095 158);
+  --accent-foreground: oklch(0.1 0.028 158);
 
   --destructive: oklch(0.55 0.20 25);
   --destructive-foreground: oklch(0.96 0.01 85);
 
   --border: oklch(0.94 0.02 85 / 12%);
   --input: oklch(0.94 0.02 85 / 14%);
-  --ring: oklch(0.74 0.10 80 / 60%);
+  --ring: oklch(0.58 0.095 158 / 60%);
 
   --ivory: oklch(0.94 0.02 85);
-  --gold: oklch(0.74 0.10 80);
-  --gold-soft: oklch(0.74 0.10 80 / 55%);
-  --stone: oklch(0.135 0.01 58);
-  --charcoal: oklch(0.175 0.01 58);
+  /* `gold` token kept for Tailwind class names — brand colour is premium green */
+  --gold: oklch(0.58 0.095 158);
+  --gold-soft: oklch(0.58 0.095 158 / 55%);
+  --stone: oklch(0.125 0.024 158);
+  --charcoal: oklch(0.17 0.026 158);
 }
 
 @layer base {
@@ -153,6 +153,34 @@
     background: var(--gradient-overlay);
   }
 
+  /** Hero card label chips (Speisekarte, Reservierung, …) */
+  .hero-card-chip {
+    border-color: oklch(0.58 0.095 158 / 22%);
+    background: oklch(0.13 0.028 158 / 82%);
+    box-shadow: 0 6px 18px rgba(6, 12, 9, 0.28);
+  }
+  .group:hover .hero-card-chip {
+    border-color: oklch(0.58 0.095 158 / 38%);
+    box-shadow: 0 8px 22px rgba(6, 12, 9, 0.34);
+  }
+  .hero-card-chip-action {
+    border-color: oklch(0.58 0.095 158 / 28%);
+    background: oklch(0.11 0.026 158 / 72%);
+  }
+  .group:hover .hero-card-chip-action {
+    border-color: oklch(0.58 0.095 158 / 45%);
+    background: oklch(0.16 0.03 158 / 88%);
+    color: var(--color-gold);
+  }
+
+  /** White-on-black logo assets on dark UI — ~2× perceived brightness */
+  .logo-on-dark {
+    mix-blend-mode: screen;
+    filter: brightness(2) contrast(1.08);
+    -webkit-filter: brightness(2) contrast(1.08);
+    drop-shadow: 0 0 14px rgba(255, 255, 255, 0.38);
+  }
+
   .reveal {
     opacity: 0;
     transform: translateY(28px);
@@ -163,25 +191,4 @@
     transform: translateY(0);
   }
 
-  /** Rounded rect matches Hero reviews chip: 14px mobile, 18px sm+. */
-  .reviews-badge-spark-ring {
-    rx: 14px;
-    ry: 14px;
-  }
-  @media (min-width: 640px) {
-    .reviews-badge-spark-ring {
-      rx: 18px;
-      ry: 18px;
-    }
-  }
-
-  .reviews-badge-spark-travel {
-    animation: reviews-badge-spark-travel 3.2s linear infinite;
-  }
-
-  @media (prefers-reduced-motion: reduce) {
-    .reviews-badge-spark-travel {
-      animation: none;
-    }
-  }
 }

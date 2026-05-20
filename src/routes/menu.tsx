@@ -15,11 +15,29 @@ import menuPhoto2 from "@/assets/menu-photo-2.png";
 import menuPhoto3 from "@/assets/menu-photo-3.png";
 import menuPhoto4 from "@/assets/menu-photo-4.png";
 import menuPhoto5 from "@/assets/menu-photo-5.png";
+import menuPhoto6 from "@/assets/menu-photo-6.png";
+import menuPhoto7 from "@/assets/menu-photo-7.png";
+import menuPhoto8 from "@/assets/menu-photo-8.png";
+import menuPhoto9 from "@/assets/menu-photo-9.png";
+import menuPhoto10 from "@/assets/menu-photo-10.png";
+import menuPhoto11 from "@/assets/menu-photo-11.png";
 
 const DEFAULT_SI = 6;
 const DEFAULT_II = 4;
 
-const menuPhotos = [menuPhoto1, menuPhoto2, menuPhoto3, menuPhoto4, menuPhoto5] as const;
+const menuPhotos = [
+  menuPhoto1,
+  menuPhoto2,
+  menuPhoto3,
+  menuPhoto4,
+  menuPhoto5,
+  menuPhoto6,
+  menuPhoto7,
+  menuPhoto8,
+  menuPhoto9,
+  menuPhoto10,
+  menuPhoto11,
+] as const;
 
 function getImageForDishIndices(si: number, ii: number) {
   const key = `${si}:${ii}`;
@@ -33,11 +51,11 @@ function getImageForDishIndices(si: number, ii: number) {
 export const Route = createFileRoute("/menu")({
   head: () => ({
     meta: [
-      { title: "Speisekarte — Restaurant Dionysos Eching" },
+      { title: "Speisekarte — Arkadirestaurant München" },
       {
         name: "description",
         content:
-          "Speisekarte Restaurant Dionysos: griechische Vorspeisen, Meeresfrüchte, Gyros, Grill-Spezialitäten, Desserts, Weine und Getränke.",
+          "Speisekarte Arkadirestaurant: griechische Vorspeisen, Meeresfrüchte, Gyros, Grill-Spezialitäten, Desserts, Weine und Getränke.",
       },
     ],
     links: [
@@ -79,13 +97,12 @@ function MenuPage() {
       <section className="relative overflow-hidden border-b border-white/10 px-6 py-20 sm:py-24">
         <img
           src={menuIntroBackground}
-          alt=""
-          className="absolute inset-0 h-full w-full object-cover object-center brightness-[0.66] contrast-[1.08] saturate-[1.04]"
-          aria-hidden
+          alt={t("menuPage.heroAlt")}
+          className="absolute inset-0 h-full w-full object-cover object-[center_40%] brightness-[0.66] contrast-[1.08] saturate-[1.04]"
         />
-        <div className="pointer-events-none absolute inset-0 bg-gradient-to-r from-[rgba(12,9,7,0.88)] via-[rgba(12,9,7,0.58)] to-[rgba(12,9,7,0.34)]" />
-        <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-background via-transparent to-[rgba(12,9,7,0.28)]" />
-        <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_18%_22%,rgba(202,167,106,0.18),transparent_38%)]" />
+        <div className="pointer-events-none absolute inset-0 bg-gradient-to-r from-[rgba(8,14,11,0.88)] via-[rgba(8,14,11,0.58)] to-[rgba(8,14,11,0.34)]" />
+        <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-background via-transparent to-[rgba(8,14,11,0.28)]" />
+        <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_18%_22%,var(--glow-brand-sm),transparent_38%)]" />
         <div className="relative mx-auto max-w-6xl">
           <Link
             to="/"
@@ -116,10 +133,10 @@ function MenuPage() {
           aria-hidden
         />
         <div className="absolute inset-0 bg-[rgba(8,6,5,0.74)]" />
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_31%_9%,rgba(202,167,106,0.28),transparent_29%),radial-gradient(circle_at_78%_38%,rgba(202,167,106,0.12),transparent_30%),linear-gradient(115deg,rgba(14,11,9,0.92),rgba(18,14,12,0.72))]" />
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_31%_9%,var(--glow-brand-md),transparent_29%),radial-gradient(circle_at_78%_38%,var(--glow-brand-lg),transparent_30%),linear-gradient(115deg,rgba(8,14,11,0.92),rgba(10,16,13,0.72))]" />
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_42%,rgba(0,0,0,0.46)_82%,rgba(0,0,0,0.72)_100%)]" />
         <div className="relative mx-auto grid max-w-[88rem] gap-8 lg:grid-cols-[minmax(0,63fr)_minmax(21rem,37fr)] lg:items-start">
-          <article className="relative overflow-hidden rounded-[2rem] border border-gold/20 bg-[rgba(27,22,18,0.76)] p-6 shadow-[0_26px_96px_-54px_rgba(0,0,0,0.95),0_0_42px_rgba(202,167,106,0.07),inset_0_1px_0_rgba(255,255,255,0.07)] backdrop-blur-xl sm:p-8 lg:p-10">
+          <article className="relative overflow-hidden rounded-[2rem] border border-gold/20 bg-[rgba(14,22,18,0.76)] p-6 shadow-[0_26px_96px_-54px_rgba(0,0,0,0.95),0_0_42px_color-mix(in_oklch,var(--gold)_7%,transparent),inset_0_1px_0_rgba(255,255,255,0.07)] backdrop-blur-xl sm:p-8 lg:p-10">
             <div className="pointer-events-none absolute inset-x-8 top-0 h-px bg-gradient-to-r from-transparent via-gold/55 to-transparent" />
             <div className="pointer-events-none absolute -left-24 top-16 h-72 w-72 rounded-full bg-gold/10 blur-3xl" />
             <div className="relative mb-11 border-b border-white/10 pb-8">
@@ -155,7 +172,7 @@ function MenuPage() {
                         onClick={() => setSel({ si: entry.si, ii: entry.ii })}
                         className={`group rounded-2xl border-l px-4 py-3 text-left transition-all duration-300 ${
                           sel.si === entry.si && sel.ii === entry.ii
-                            ? "border-gold/75 bg-gold/10 shadow-[0_12px_34px_-30px_rgba(202,167,106,0.8)] ring-1 ring-gold/30"
+                            ? "border-gold/75 bg-gold/10 shadow-brand ring-1 ring-gold/30"
                             : "border-transparent hover:border-gold/35 hover:bg-white/[0.045]"
                         }`}
                       >
@@ -174,7 +191,7 @@ function MenuPage() {
           </article>
 
           <aside className="order-first self-start lg:sticky lg:top-8 lg:order-none">
-            <div className="relative min-h-[28rem] overflow-hidden rounded-[2rem] border border-gold/18 bg-charcoal shadow-[0_28px_100px_-56px_rgba(0,0,0,0.95),0_0_38px_rgba(202,167,106,0.08)] sm:min-h-[36rem] lg:h-[calc(100dvh-4rem)] lg:min-h-0">
+            <div className="relative min-h-[28rem] overflow-hidden rounded-[2rem] border border-gold/18 bg-charcoal shadow-[0_28px_100px_-56px_rgba(0,0,0,0.95),0_0_38px_color-mix(in_oklch,var(--gold)_8%,transparent)] sm:min-h-[36rem] lg:h-[calc(100dvh-4rem)] lg:min-h-0">
               <img
                 key={`${sel.si}-${sel.ii}`}
                 src={selectedDish.image}
@@ -182,9 +199,9 @@ function MenuPage() {
                 className="absolute inset-0 h-full w-full object-cover brightness-[1.04] contrast-[1.08] saturate-[1.08] animate-[fade-in_0.45s_ease-out_both]"
                 loading="lazy"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-[rgba(18,14,12,0.78)] via-transparent to-[rgba(18,14,12,0.18)]" />
+              <div className="absolute inset-0 bg-gradient-to-t from-[rgba(10,16,13,0.78)] via-transparent to-[rgba(10,16,13,0.18)]" />
               <div className="pointer-events-none absolute inset-0 rounded-[2rem] ring-1 ring-inset ring-white/10" />
-              <div className="absolute bottom-5 left-5 right-5 rounded-[1.5rem] border border-white/12 bg-[rgba(18,14,12,0.58)] p-5 shadow-[0_18px_60px_-34px_rgba(0,0,0,0.9)] backdrop-blur-md">
+              <div className="absolute bottom-5 left-5 right-5 rounded-[1.5rem] border border-white/12 bg-[rgba(10,16,13,0.58)] p-5 shadow-[0_18px_60px_-34px_rgba(0,0,0,0.9)] backdrop-blur-md">
                 <p className="text-[10px] uppercase tracking-[0.32em] text-gold">{selectedDish.category}</p>
                 <p className="text-display mt-2 text-3xl leading-tight text-ivory">{selectedDish.name}</p>
                 <p className="mt-3 max-w-sm text-sm leading-relaxed text-ivory/65">{selectedDish.description}</p>

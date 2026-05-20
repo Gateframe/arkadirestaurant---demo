@@ -53,8 +53,8 @@ export function Gallery() {
         },
         {
           img: g09,
-          altKey: "gallery.alt02" as const,
-          imgClass: "object-cover object-center",
+          altKey: "gallery.alt07" as const,
+          imgClass: "object-cover object-[center_42%]",
           module: "H" as const,
           col: [2, 4] as const,
           row: [1, 2] as const,
@@ -93,7 +93,7 @@ export function Gallery() {
         },
         {
           img: g07,
-          altKey: "gallery.alt07" as const,
+          altKey: "gallery.alt02" as const,
           imgClass: "object-cover object-[center_45%]",
           module: "S" as const,
           col: [4, 5] as const,

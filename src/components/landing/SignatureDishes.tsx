@@ -13,9 +13,9 @@ export function SignatureDishes() {
   const dishes = useMemo(
     () =>
       [
-        { nameKey: "dish1.name", descKey: "dish1.desc", price: "7,50 €", img: dish1 },
-        { nameKey: "dish2.name", descKey: "dish2.desc", price: "8,50 €", img: dish2 },
-        { nameKey: "dish3.name", descKey: "dish3.desc", price: "6,50 €", img: dish3 },
+        { nameKey: "dish1.name", descKey: "dish1.desc", price: "25,00 €", img: dish1 },
+        { nameKey: "dish2.name", descKey: "dish2.desc", price: "25,00 €", img: dish2 },
+        { nameKey: "dish3.name", descKey: "dish3.desc", price: "25,00 €", img: dish3 },
       ] as const,
     [],
   );
