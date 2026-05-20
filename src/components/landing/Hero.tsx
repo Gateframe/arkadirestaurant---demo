@@ -198,13 +198,13 @@ export function Hero() {
             {/* Glass label chip — navbar language, bottom-right */}
             <div className="pointer-events-none absolute inset-0 z-10">
               <div
-                className="hero-card-chip pointer-events-auto absolute bottom-3 right-3 flex max-w-[min(100%,calc(100%-1rem))] items-center gap-1.5 rounded-full border py-1 pl-2.5 pr-1 backdrop-blur-[14px] transition-[border-color,box-shadow,background-color] duration-300 sm:bottom-[18px] sm:right-[18px] sm:gap-2 sm:pl-3 sm:pr-1"
+                className="pointer-events-auto absolute bottom-3 right-3 flex max-w-[min(100%,calc(100%-1rem))] items-center gap-1.5 rounded-full border border-gold/40 bg-[rgba(14,32,22,0.88)] py-1 pl-2.5 pr-1 shadow-[0_6px_18px_rgba(6,14,9,0.4)] backdrop-blur-[14px] transition-[border-color,box-shadow,background-color] duration-300 sm:bottom-[18px] sm:right-[18px] sm:gap-2 sm:pl-3 sm:pr-1 group-hover:border-gold/65 group-hover:bg-[rgba(16,38,26,0.94)]"
               >
                 <span className="min-w-0 truncate text-[9px] font-medium uppercase leading-none tracking-[0.2em] text-ivory sm:text-[10px] sm:tracking-[0.22em]">
                   {t(c.badgeKey)}
                 </span>
                 <span
-                  className="hero-card-chip-action grid h-7 w-7 shrink-0 place-items-center rounded-full border text-ivory shadow-[0_2px_8px_rgba(0,0,0,0.18)] backdrop-blur-md transition-[border-color,background-color,color] duration-300"
+                  className="grid h-7 w-7 shrink-0 place-items-center rounded-full border border-gold/45 bg-[rgba(18,44,30,0.92)] text-ivory shadow-[0_2px_8px_rgba(0,0,0,0.2)] backdrop-blur-md transition-[border-color,background-color,color] duration-300 group-hover:border-gold group-hover:bg-gold group-hover:text-charcoal"
                   aria-hidden
                 >
                   <ArrowUpRight className="h-3 w-3 transition-transform duration-300 ease-out group-hover:translate-x-0.5 group-hover:-translate-y-0.5 sm:h-3.5 sm:w-3.5" />
