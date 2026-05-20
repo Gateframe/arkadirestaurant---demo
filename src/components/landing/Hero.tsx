@@ -198,13 +198,13 @@ export function Hero() {
             {/* Glass label chip — navbar language, bottom-right */}
             <div className="pointer-events-none absolute inset-0 z-10">
               <div
-                className="pointer-events-auto absolute bottom-3 right-3 flex max-w-[min(100%,calc(100%-1rem))] items-center gap-1.5 rounded-full border border-gold/40 bg-[rgba(14,32,22,0.88)] py-1 pl-2.5 pr-1 shadow-[0_6px_18px_rgba(6,14,9,0.4)] backdrop-blur-[14px] transition-[border-color,box-shadow,background-color] duration-300 sm:bottom-[18px] sm:right-[18px] sm:gap-2 sm:pl-3 sm:pr-1 group-hover:border-gold/65 group-hover:bg-[rgba(16,38,26,0.94)]"
+                className="pointer-events-auto absolute bottom-3 right-3 flex max-w-[min(100%,calc(100%-1rem))] items-center gap-1.5 rounded-full border border-gold/25 bg-[rgba(10,34,22,0.5)] py-1 pl-2.5 pr-1 shadow-[0_4px_24px_rgba(8,22,14,0.42),inset_0_1px_0_rgba(120,180,140,0.1)] backdrop-blur-2xl backdrop-saturate-150 transition-[border-color,box-shadow,background-color] duration-300 sm:bottom-[18px] sm:right-[18px] sm:gap-2 sm:pl-3 sm:pr-1 group-hover:border-gold/40 group-hover:bg-[rgba(12,40,26,0.6)]"
               >
                 <span className="min-w-0 truncate text-[9px] font-medium uppercase leading-none tracking-[0.2em] text-ivory sm:text-[10px] sm:tracking-[0.22em]">
                   {t(c.badgeKey)}
                 </span>
                 <span
-                  className="grid h-7 w-7 shrink-0 place-items-center rounded-full border border-gold/45 bg-[rgba(18,44,30,0.92)] text-ivory shadow-[0_2px_8px_rgba(0,0,0,0.2)] backdrop-blur-md transition-[border-color,background-color,color] duration-300 group-hover:border-gold group-hover:bg-gold group-hover:text-charcoal"
+                  className="grid h-7 w-7 shrink-0 place-items-center rounded-full border border-gold/20 bg-[rgba(8,30,18,0.44)] text-ivory shadow-[0_2px_12px_rgba(8,20,12,0.32),inset_0_1px_0_rgba(100,160,120,0.08)] backdrop-blur-xl transition-[border-color,background-color,color] duration-300 group-hover:border-gold/45 group-hover:bg-[rgba(10,36,22,0.54)] group-hover:text-gold"
                   aria-hidden
                 >
                   <ArrowUpRight className="h-3 w-3 transition-transform duration-300 ease-out group-hover:translate-x-0.5 group-hover:-translate-y-0.5 sm:h-3.5 sm:w-3.5" />
