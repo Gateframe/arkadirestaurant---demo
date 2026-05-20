@@ -11,7 +11,12 @@ import { nitro } from "nitro/vite";
 // Vercel runs Node/serverless, not Cloudflare Workers. Use Nitro on Vercel (see
 // https://vercel.com/docs/frameworks/full-stack/tanstack-start); keep Cloudflare
 // for local and non-Vercel builds (e.g. wrangler deploy).
-const deployVercel = process.env.VERCEL === "1";
+/** Vercel sets VERCEL=1 / VERCEL_ENV during builds; also force preset via vercel.json if needed. */
+const deployVercel =
+  process.env.VERCEL === "1" ||
+  process.env.VERCEL === "true" ||
+  Boolean(process.env.VERCEL_ENV) ||
+  process.env.NITRO_PRESET === "vercel";
 
 // Redirect TanStack Start's bundled server entry to src/server.ts (our SSR error wrapper).
 // @cloudflare/vite-plugin builds from this — wrangler.jsonc main alone is insufficient.

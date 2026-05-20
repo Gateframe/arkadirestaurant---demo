@@ -36,13 +36,25 @@ function NotFoundComponent() {
 function ErrorComponent({ error, reset }: { error: Error; reset: () => void }) {
   console.error(error);
   const router = useRouter();
-  const { t } = useI18n();
+  let title = de["error.title"];
+  let body = de["error.body"];
+  let retry = de["error.retry"];
+  let home = de["error.home"];
+  try {
+    const { t } = useI18n();
+    title = t("error.title");
+    body = t("error.body");
+    retry = t("error.retry");
+    home = t("error.home");
+  } catch {
+    /* error may render outside I18nProvider — use static DE copy */
+  }
 
   return (
     <div className="flex min-h-screen items-center justify-center bg-background px-4">
       <div className="max-w-md text-center">
-        <h1 className="text-xl font-semibold tracking-tight text-foreground">{t("error.title")}</h1>
-        <p className="mt-2 text-sm text-muted-foreground">{t("error.body")}</p>
+        <h1 className="text-xl font-semibold tracking-tight text-foreground">{title}</h1>
+        <p className="mt-2 text-sm text-muted-foreground">{body}</p>
         <div className="mt-6 flex flex-wrap justify-center gap-2">
           <button
             type="button"
@@ -52,13 +64,13 @@ function ErrorComponent({ error, reset }: { error: Error; reset: () => void }) {
             }}
             className="inline-flex items-center justify-center rounded-md bg-primary px-4 py-2 text-sm font-medium text-primary-foreground transition-colors hover:bg-primary/90"
           >
-            {t("error.retry")}
+            {retry}
           </button>
           <a
             href="/"
             className="inline-flex items-center justify-center rounded-md border border-input bg-background px-4 py-2 text-sm font-medium text-foreground transition-colors hover:bg-accent"
           >
-            {t("error.home")}
+            {home}
           </a>
         </div>
       </div>
