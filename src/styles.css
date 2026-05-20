@@ -1,0 +1,187 @@
+@import "tailwindcss" source(none);
+@source "../src";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --radius-2xl: calc(var(--radius) + 8px);
+  --radius-3xl: calc(var(--radius) + 16px);
+
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-ring-offset-background: var(--background);
+
+  --color-ivory: var(--ivory);
+  --color-gold: var(--gold);
+  --color-gold-soft: var(--gold-soft);
+  --color-stone: var(--stone);
+  --color-charcoal: var(--charcoal);
+
+  --font-serif: "Cormorant Garamond", "Times New Roman", serif;
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+
+  --shadow-soft: 0 30px 80px -30px rgba(22, 16, 12, 0.55);
+  --shadow-card: 0 20px 60px -25px rgba(18, 14, 11, 0.65);
+  --gradient-overlay: linear-gradient(
+    180deg,
+    rgba(28, 22, 18, 0) 0%,
+    rgba(28, 22, 18, 0.14) 45%,
+    rgba(18, 14, 12, 0.78) 100%
+  );
+
+  --animate-fade-up: fade-up 0.9s cubic-bezier(0.22, 1, 0.36, 1) both;
+  --animate-fade-in: fade-in 1.2s ease-out both;
+
+  @keyframes fade-up {
+    from { opacity: 0; transform: translateY(28px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes fade-in {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+
+  /** Traveling highlight along an SVG stroke (reviews badge frame). */
+  @keyframes reviews-badge-spark-travel {
+    to {
+      stroke-dashoffset: -100;
+    }
+  }
+}
+
+:root {
+  --radius: 0.875rem;
+
+  /* Dark luxury palette — warm graphite / brown-black (not pure black) */
+  --background: oklch(0.11 0.012 58);
+  --foreground: oklch(0.94 0.02 85);      /* ivory #f3efe2 */
+
+  --card: oklch(0.145 0.01 58);
+  --card-foreground: oklch(0.94 0.02 85);
+
+  --popover: oklch(0.145 0.01 58);
+  --popover-foreground: oklch(0.94 0.02 85);
+
+  --primary: oklch(0.74 0.10 80);         /* gold #b7a46a */
+  --primary-foreground: oklch(0.1 0.012 58);
+
+  --secondary: oklch(0.17 0.01 58);
+  --secondary-foreground: oklch(0.94 0.02 85);
+
+  --muted: oklch(0.17 0.01 58);
+  --muted-foreground: oklch(0.72 0.02 78);
+
+  --accent: oklch(0.74 0.10 80);
+  --accent-foreground: oklch(0.1 0.012 58);
+
+  --destructive: oklch(0.55 0.20 25);
+  --destructive-foreground: oklch(0.96 0.01 85);
+
+  --border: oklch(0.94 0.02 85 / 12%);
+  --input: oklch(0.94 0.02 85 / 14%);
+  --ring: oklch(0.74 0.10 80 / 60%);
+
+  --ivory: oklch(0.94 0.02 85);
+  --gold: oklch(0.74 0.10 80);
+  --gold-soft: oklch(0.74 0.10 80 / 55%);
+  --stone: oklch(0.135 0.01 58);
+  --charcoal: oklch(0.175 0.01 58);
+}
+
+@layer base {
+  * {
+    border-color: var(--color-border);
+  }
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+  ::selection {
+    background: var(--color-gold);
+    color: var(--color-background);
+  }
+}
+
+@layer utilities {
+  .font-serif { font-family: var(--font-serif); }
+  .font-sans  { font-family: var(--font-sans); }
+
+  .text-display {
+    font-family: var(--font-serif);
+    font-weight: 500;
+    letter-spacing: -0.01em;
+    line-height: 0.92;
+  }
+
+  .eyebrow {
+    font-family: var(--font-sans);
+    font-size: 0.7rem;
+    letter-spacing: 0.32em;
+    text-transform: uppercase;
+    color: var(--color-gold);
+  }
+
+  .gradient-overlay {
+    background: var(--gradient-overlay);
+  }
+
+  .reveal {
+    opacity: 0;
+    transform: translateY(28px);
+    transition: opacity 1s cubic-bezier(0.22,1,0.36,1), transform 1s cubic-bezier(0.22,1,0.36,1);
+  }
+  .reveal.in-view {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /** Rounded rect matches Hero reviews chip: 14px mobile, 18px sm+. */
+  .reviews-badge-spark-ring {
+    rx: 14px;
+    ry: 14px;
+  }
+  @media (min-width: 640px) {
+    .reviews-badge-spark-ring {
+      rx: 18px;
+      ry: 18px;
+    }
+  }
+
+  .reviews-badge-spark-travel {
+    animation: reviews-badge-spark-travel 3.2s linear infinite;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .reviews-badge-spark-travel {
+      animation: none;
+    }
+  }
+}
